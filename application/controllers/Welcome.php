@@ -891,6 +891,7 @@ public function send_daily_message()
     // Fetch today's withdrawal data
     $todayWithdrawals = $this->queries->get_loan_approve_today($comp_id);
 
+	
     // Construct the message header
     $message = "Gawa leo tarehe $date:\n";
 
@@ -913,19 +914,12 @@ public function send_daily_message()
         // '255679420326',
     ];
 
-    // Split the message into smaller parts if it exceeds 160 characters (adjust based on your SMS service's limit)
-    $message_parts = str_split($message, 160); // Split message into parts of 160 characters or less
-
-    // Send each part to all recipients
+    // Send the message to all recipients
     foreach ($recipient_numbers as $recipient_number) {
-        foreach ($message_parts as $part) {
-            $this->sendsms($recipient_number, $part);
-        }
+        $this->sendsms($recipient_number, $message);
     }
-
-    echo "Messages sent successfully!";
+	echo "Messages sent successfully!";
 }
-
 
 
 
