@@ -913,12 +913,19 @@ public function send_daily_message()
         // '255679420326',
     ];
 
-    // Send the message to all recipients
+    // Split the message into smaller parts if it exceeds 160 characters (adjust based on your SMS service's limit)
+    $message_parts = str_split($message, 160); // Split message into parts of 160 characters or less
+
+    // Send each part to all recipients
     foreach ($recipient_numbers as $recipient_number) {
-        $this->sendsms($recipient_number, $message);
+        foreach ($message_parts as $part) {
+            $this->sendsms($recipient_number, $part);
+        }
     }
-	echo "Messages sent successfully!";
+
+    echo "Messages sent successfully!";
 }
+
 
 
 
