@@ -267,7 +267,7 @@ public function create_income_detail(){
 
         $massage = 'Ndugu ' . $first_name . ' ' . $last_name . ', ' .
     'Umelipa Faini ya Tsh. ' . number_format($penart_paid) . '. ' .
-    'Leta marejesho kwa wakati ili kuepuka adhabu. Msaada: 0679420326.';
+    'Leta marejesho kwa wakati ili kuepuka adhabu. Msaada: 0753979112.';
 
 
    
@@ -314,7 +314,8 @@ public function create_income_detail(){
                  }else{ 
               $this->insert_income($comp_id,$inc_id,$blanch_id,$customer_id,$username,$penart_paid,$penart_date,$loan_id,$group_id);
               $this->session->set_flashdata('massage','Tsh. '.$penart_paid .' Paid successfully');
-              $this->sendsms('255629364847', $message2); // To specified number
+              $this->sendsms('255629364847', $message2);
+              $this->sendsms('255748470181', $message2); // To specified number
               $this->sendsms($phone,$massage);
              
                  }
